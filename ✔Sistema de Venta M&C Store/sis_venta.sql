@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-05-2021 a las 16:02:43
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.9
+-- Tiempo de generación: 28-09-2023 a las 04:02:46
+-- Versión del servidor: 10.1.38-MariaDB
+-- Versión de PHP: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -33,7 +34,7 @@ CREATE TABLE `cliente` (
   `telefono` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
   `direccion` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
   `usuario_id` int(11) NOT NULL,
-  `estado` int(11) NOT NULL DEFAULT 1
+  `estado` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -41,8 +42,7 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`idcliente`, `nombre`, `telefono`, `direccion`, `usuario_id`, `estado`) VALUES
-(1, 'Público en General', '8296826298', 'S/D', 1, 1),
-(2, 'Angel sifuentes flores', '2147483647', 'Lima - Huari', 1, 1);
+(1, 'Público en General', '8296826298', 'S/D', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -63,7 +63,7 @@ CREATE TABLE `configuracion` (
 --
 
 INSERT INTO `configuracion` (`id`, `nombre`, `telefono`, `email`, `direccion`) VALUES
-(1, 'Vida Informático', '925491523', 'angelsifuentes2580@gamil.com', 'Lima');
+(1, 'Danny Crisostomo', '936083812', 'DannyCrisostomo@gmail.com', 'Lima');
 
 -- --------------------------------------------------------
 
@@ -161,7 +161,7 @@ CREATE TABLE `producto` (
   `precio` decimal(10,2) NOT NULL,
   `existencia` int(11) NOT NULL,
   `usuario_id` int(11) NOT NULL,
-  `estado` int(11) NOT NULL DEFAULT 1
+  `estado` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -169,11 +169,11 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`codproducto`, `codigo`, `descripcion`, `precio`, `existencia`, `usuario_id`, `estado`) VALUES
-(2, '321', 'Gaseosa kr', '10.00', 180, 1, 1),
-(3, '654', 'Galletas', '16.00', 8, 1, 1),
-(4, '987', 'Sandia', '13.00', 55, 1, 1),
-(5, '12345', 'prueba', '1503.00', 50, 0, 1),
-(6, '12345', 'prueba', '1503.00', 50, 0, 0);
+(2, '321', 'Skins de Héroes', '10.00', 180, 1, 1),
+(3, '145', 'Emoticonos y Frases', '16.00', 8, 1, 1),
+(4, '987', 'Cofres y Llaves', '13.00', 55, 1, 1),
+(5, '1457', 'Sets de Artículos', '1503.00', 50, 0, 1),
+(6, '4155', 'Avatar de Jugador', '1503.00', 50, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -187,7 +187,7 @@ CREATE TABLE `usuario` (
   `correo` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `usuario` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `clave` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `estado` int(11) NOT NULL DEFAULT 1
+  `estado` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -195,8 +195,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`idusuario`, `nombre`, `correo`, `usuario`, `clave`, `estado`) VALUES
-(1, 'angel sifuentes', 'angelsifuentes2580@gmail.com', 'admin', '21232f297a57a5a743894a0e4a801fc3', 1),
-(2, 'Vida informatico', 'angel@gmail.com', 'angel', 'f4f068e71e0d87bf0ad51e6214ab84e9', 1);
+(1, 'Danny Crisostomo', 'DannyCrisostomo@gmail.com', 'admin', '21232f297a57a5a743894a0e4a801fc3', 1);
 
 -- --------------------------------------------------------
 
@@ -209,7 +208,7 @@ CREATE TABLE `ventas` (
   `id_cliente` int(11) NOT NULL,
   `total` decimal(10,2) NOT NULL,
   `id_usuario` int(11) NOT NULL,
-  `fecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
